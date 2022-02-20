@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "minVersion": "0.7",
+    "package": "net.iafenvoy.cosmetics.mixins",
+    "compatibilityLevel": "JAVA_8",
+    "server": [
+        "AddNickMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

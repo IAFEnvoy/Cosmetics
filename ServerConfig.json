@@ -1,0 +1,21 @@
+[{
+    "name": "IAFEnvoy",
+    "particle": [
+        "exampleParticle"
+    ],
+    "nowUsingParticle": 0,
+    "nick": [
+        "[Author]"
+    ],
+    "nowUsingNick": 0
+}, {
+    "name": "111",
+    "particle": [
+        "exampleParticle"
+    ],
+    "nowUsingParticle": 0,
+    "nick": [
+        "[User]"
+    ],
+    "nowUsingNick": 0
+}]

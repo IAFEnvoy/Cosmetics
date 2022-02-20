@@ -1,0 +1,35 @@
+{
+    "schemaVersion": 1,
+    "id": "cosmetics",
+    "version": "1.0.0",
+
+    "name": "Cosmetics",
+    "description": "Add cosmetics on player in server side.\nYou don't need to install this mod in client side.",
+    "authors": [
+        "IAFEnvoy"
+    ],
+
+    "license": "GPL 3.0",
+    "icon": "assets/cosmetics/icon.png",
+
+    "environment": "server",
+    "entrypoints": {
+        "server": [
+            "net.iafenvoy.cosmetics.Cosmetics"
+        ]
+    },
+
+    "mixins": [
+        "cosmetics.mixins.json"
+    ],
+
+    "depends": {
+        "fabricloader": ">=0.11.3",
+        "fabric": "*",
+        "minecraft": "1.16.x",
+        "java": ">=8"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
+}
