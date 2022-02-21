@@ -28,11 +28,12 @@ public class PlayerSetting {
   }
 
   public MultiParticleType getParticle() {
-    return nowUsingParticle == -1 ? null : MultiParticleType.getByName(this.particle.get(nowUsingParticle));
+    return nowUsingParticle < 0 || nowUsingParticle >= this.particle.size() ? null
+        : MultiParticleType.getByName(this.particle.get(nowUsingParticle));
   }
 
   public String getNick() {
-    return nowUsingNick == -1 ? "" : this.nick.get(nowUsingNick);
+    return nowUsingNick < 0 || nowUsingNick >= this.nick.size() ? "%s" : this.nick.get(nowUsingNick);
   }
 
   public String toString() {

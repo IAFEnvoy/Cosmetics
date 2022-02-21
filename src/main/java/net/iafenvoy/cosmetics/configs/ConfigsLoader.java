@@ -42,8 +42,8 @@ public class ConfigsLoader {
           nicks.add(nick.getAsString());
         int nowUsingNick = jsonElement.getAsJsonObject().get("nowUsingNick").getAsInt();
         new PlayerSetting(name, particles, nicks, nowUsingParticle, nowUsingNick);
-        logger.info("Succeeded to load config");
       }
+      logger.info("Succeeded to load config");
     } catch (FileNotFoundException e) {
       logger.warn("Config file not found, generating one.", e);
     } catch (Exception e) {
@@ -62,18 +62,19 @@ public class ConfigsLoader {
         JsonArray nicks = new JsonArray();
         for (String nick : setting.nick)
           nicks.add(nick);
+        System.out.println(nicks.toString());
         json.add(new JsonParser().parse(
-            "{\"name\":\"" + setting.getName() + "\",\"particle\":\"" + particles.toString()
-                + "\",\"nowUsingParticle\":\"" + setting.nowUsingParticle + "\",\"nick\":\"" + nicks.toString()
-                + "\",\"nowUsingNick\":\"" + setting.nowUsingNick + "\"}"));
+            "{\"name\":\"" + setting.getName() + "\",\"particle\":" + particles.toString()
+                + ",\"nowUsingParticle\":" + setting.nowUsingParticle + ",\"nick\":" + nicks.toString()
+                + ",\"nowUsingNick\":" + setting.nowUsingNick + "}"));
       }
       BufferedWriter bw = new BufferedWriter(new FileWriter(file_path));
       bw.write(json.toString());
       bw.close();
+      logger.info("Succeeded to save config");
     } catch (Exception e) {
       logger.error("Failed to save config", e);
     }
-    logger.info("Succeeded to save config");
 
   }
 }

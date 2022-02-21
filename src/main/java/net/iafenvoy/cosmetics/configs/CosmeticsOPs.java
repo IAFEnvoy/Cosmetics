@@ -14,22 +14,26 @@ public class CosmeticsOPs {
   public static List<String> ops = new ArrayList<>();
 
   public static void load() {
+    logger.info("Start loading cosmetics ops");
     ops.clear();
     try {
       List<String> lines = FileUtils.readByLines(ops_file_path);
       for (String line : lines) {
         if (line.startsWith("#"))
           continue;
-        ops.add(line);
+        ops.add(line.toLowerCase());
       }
+      logger.info("Succeeded to load cosmetics ops");
     } catch (Exception e) {
       logger.error("Error loading ops file", e);
     }
   }
 
   public static void save() {
+    logger.info("Start saving cosmetics ops");
     try {
       FileUtils.saveByLines(ops_file_path, ops);
+      logger.info("Succeeded to save cosmetics ops");
     } catch (Exception e) {
       logger.error("Error saving ops file", e);
     }

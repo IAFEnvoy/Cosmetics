@@ -1,73 +1,41 @@
 {
     "name": "example",
+    "timeDelta": -1,
     "particles": [{
-        "type": "dust",
-        "color": {
-            "r": 1.0,
-            "g": 1.0,
-            "b": 1.0,
-            "size": 1.0
+            "type": "dust",
+            "color": [1.0, 1.0, 1.0, 1.0],
+            "pos": [0, 1, 0],
+            "delta": [0.3, 0.5, 0.3],
+            "speed": 0,
+            "count": 2,
+            "force": true
         },
-        "pos": {
-            "x": 0,
-            "y": 1,
-            "z": 0
+        {
+            "type": "block",
+            "block": "minecraft:grass_block",
+            "pos": [0, 1, 0],
+            "delta": [0.3, 0.5, 0.3],
+            "speed": 0,
+            "count": 2,
+            "force": true
         },
-        "delta": {
-            "x": 0.3,
-            "y": 0.5,
-            "z": 0.3
+        {
+            "type": "falling_dust",
+            "block": "minecraft:grass_block",
+            "pos": [0, 1, 0],
+            "delta": [0.3, 0.5, 0.3],
+            "speed": 0,
+            "count": 2,
+            "force": true
         },
-        "speed": 0,
-        "count": 2,
-        "force": true
-    }, {
-        "type": "block",
-        "block": "minecraft:grass_block[snowy=true]",
-        "pos": {
-            "x": 0,
-            "y": 1,
-            "z": 0
-        },
-        "delta": {
-            "x": 0.3,
-            "y": 0.5,
-            "z": 0.3
-        },
-        "speed": 0,
-        "count": 2,
-        "force": true
-    }, {
-        "type": "falling_dust",
-        "block": "minecraft:grass_block[snowy=true]",
-        "pos": {
-            "x": 0,
-            "y": 1,
-            "z": 0
-        },
-        "delta": {
-            "x": 0.3,
-            "y": 0.5,
-            "z": 0.3
-        },
-        "speed": 0,
-        "count": 2,
-        "force": true
-    }, {
-        "type": "item",
-        "item": "minecraft:apple",
-        "pos": {
-            "x": 0,
-            "y": 1,
-            "z": 0
-        },
-        "delta": {
-            "x": 0.3,
-            "y": 0.5,
-            "z": 0.3
-        },
-        "speed": 0,
-        "count": 2,
-        "force": true
-    }]
+        {
+            "type": "item",
+            "item": "minecraft:apple",
+            "pos": [0, 1, 0],
+            "delta": [0.3, 0.5, 0.3],
+            "speed": 0,
+            "count": 2,
+            "force": true
+        }
+    ]
 }

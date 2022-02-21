@@ -24,11 +24,19 @@ public class AddNickMixin {
     this.profile = profile;
   }
 
-  @Inject(method = "getName", at = @At("HEAD"), cancellable = true)
-  private void addNick(CallbackInfoReturnable<Text> ret) {
-    String nick = "";
+  @Inject(method = "getDisplayName", at = @At("HEAD"), cancellable = true)
+  private void getDisplayName(CallbackInfoReturnable<Text> ret) {
+    String nick = "%s";
     if (PlayerSetting.data.containsKey(profile.getName()))
       nick = PlayerSetting.data.get(profile.getName()).getNick();
-    ret.setReturnValue((Text) new LiteralText(String.format(nick, profile.getName())));
+    ret.setReturnValue(new LiteralText(String.format(nick, profile.getName())));
   }
+
+  // @Inject(method = "getName", at = @At("HEAD"), cancellable = true)
+  // private void getName(CallbackInfoReturnable<String> ret) {
+  // String nick = "%s";
+  // if (PlayerSetting.data.containsKey(profile.getName()))
+  // nick = PlayerSetting.data.get(profile.getName()).getNick();
+  // ret.setReturnValue(String.format(nick, profile.getName()));
+  // }
 }
