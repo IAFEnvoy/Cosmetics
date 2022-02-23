@@ -37,32 +37,63 @@ public class AdminsCommands {
                   }))
                   .then(literal("new").executes(context -> {
                     String name = StringArgumentType.getString(context, "playername");
-                    PlayerSetting.data.put(name, new PlayerSetting(name, new ArrayList<>(), new ArrayList<>(), -1, -1));
+                    PlayerSetting.data.put(name,
+                        new PlayerSetting(name, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), -1, -1, -1));
                     context.getSource().sendFeedback(new LiteralText("Successfully Create Nick List!"), false);
                     ConfigsLoader.saveConfig();
                     return 0;
                   }))
                   .then(
-                      literal("addNick").then(argument("nick", StringArgumentType.greedyString()).executes(context -> {
+                      literal("addPrefix")
+                          .then(argument("prefix", StringArgumentType.greedyString()).executes(context -> {
+                            String name = StringArgumentType.getString(context, "playername");
+                            String prefix = StringArgumentType.getString(context, "prefix");
+                            if (PlayerSetting.data.containsKey(name)) {
+                              PlayerSetting.data.get(name).prefix.add(prefix.replace("$", "§"));
+                              context.getSource().sendFeedback(new LiteralText("Prefix Added!"), false);
+                              ConfigsLoader.saveConfig();
+                            } else
+                              context.getSource().sendFeedback(new LiteralText("Player Profile Not Found!"), false);
+                            return 0;
+                          })))
+                  .then(literal("removePrefix")
+                      .then(argument("prefix", StringArgumentType.greedyString()).executes(context -> {
                         String name = StringArgumentType.getString(context, "playername");
-                        String nick = StringArgumentType.getString(context, "nick");
+                        String prefix = StringArgumentType.getString(context, "prefix");
                         if (PlayerSetting.data.containsKey(name)) {
-                          if (!nick.contains("%s"))
-                            nick = nick + "%s";
-                          PlayerSetting.data.get(name).nick.add(nick.replace("$", "§"));
-                          context.getSource().sendFeedback(new LiteralText("Nick Added!"), false);
+                          if (PlayerSetting.data.get(name).prefix.contains(prefix.replace("$", "§"))) {
+                            PlayerSetting.data.get(name).prefix.remove(prefix.replace("$", "§"));
+                            context.getSource().sendFeedback(new LiteralText("Prefix Removed!"), false);
+                          } else
+                            context.getSource().sendFeedback(new LiteralText("Prefix Not Found!"), false);
                           ConfigsLoader.saveConfig();
                         } else
                           context.getSource().sendFeedback(new LiteralText("Player Profile Not Found!"), false);
                         return 0;
                       })))
-                  .then(literal("removeNick")
-                      .then(argument("nick", StringArgumentType.greedyString()).executes(context -> {
+                  .then(literal("addSuffix")
+                      .then(argument("suffix", StringArgumentType.greedyString()).executes(context -> {
                         String name = StringArgumentType.getString(context, "playername");
-                        String nick = StringArgumentType.getString(context, "nick");
+                        String suffix = StringArgumentType.getString(context, "suffix");
                         if (PlayerSetting.data.containsKey(name)) {
-                          PlayerSetting.data.get(name).nick.remove(nick.replace("$", "§"));
-                          context.getSource().sendFeedback(new LiteralText("Nick Removed!"), false);
+                          PlayerSetting.data.get(name).suffix.add(suffix.replace("$", "§"));
+                          context.getSource().sendFeedback(new LiteralText("Suffix Added!"), false);
+                          ConfigsLoader.saveConfig();
+                        } else
+
+                          context.getSource().sendFeedback(new LiteralText("Player Profile Not Found!"), false);
+                        return 0;
+                      })))
+                  .then(literal("removeSuffix")
+                      .then(argument("suffix", StringArgumentType.greedyString()).executes(context -> {
+                        String name = StringArgumentType.getString(context, "playername");
+                        String suffix = StringArgumentType.getString(context, "suffix");
+                        if (PlayerSetting.data.containsKey(name)) {
+                          if (PlayerSetting.data.get(name).suffix.contains(suffix.replace("$", "§"))) {
+                            PlayerSetting.data.get(name).suffix.remove(suffix.replace("$", "§"));
+                            context.getSource().sendFeedback(new LiteralText("Suffix Removed!"), false);
+                          } else
+                            context.getSource().sendFeedback(new LiteralText("Suffix Not Found!"), false);
                           ConfigsLoader.saveConfig();
                         } else
                           context.getSource().sendFeedback(new LiteralText("Player Profile Not Found!"), false);

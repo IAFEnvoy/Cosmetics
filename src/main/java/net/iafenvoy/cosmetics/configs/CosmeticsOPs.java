@@ -1,5 +1,6 @@
 package net.iafenvoy.cosmetics.configs;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class CosmeticsOPs {
         ops.add(line.toLowerCase());
       }
       logger.info("Succeeded to load cosmetics ops");
+    } catch (FileNotFoundException e) {
+      logger.warn("Ops file not found, generating one.", e);
     } catch (Exception e) {
       logger.error("Error loading ops file", e);
     }

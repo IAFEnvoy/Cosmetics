@@ -37,11 +37,15 @@ public class ConfigsLoader {
         for (JsonElement particle : jsonElement.getAsJsonObject().get("particle").getAsJsonArray())
           particles.add(particle.getAsString());
         int nowUsingParticle = jsonElement.getAsJsonObject().get("nowUsingParticle").getAsInt();
-        List<String> nicks = new ArrayList<>();
-        for (JsonElement nick : jsonElement.getAsJsonObject().get("nick").getAsJsonArray())
-          nicks.add(nick.getAsString());
-        int nowUsingNick = jsonElement.getAsJsonObject().get("nowUsingNick").getAsInt();
-        new PlayerSetting(name, particles, nicks, nowUsingParticle, nowUsingNick);
+        List<String> prefixs = new ArrayList<>();
+        for (JsonElement prefix : jsonElement.getAsJsonObject().get("prefix").getAsJsonArray())
+          prefixs.add(prefix.getAsString());
+        int nowUsingPrefix = jsonElement.getAsJsonObject().get("nowUsingPrefix").getAsInt();
+        List<String> suffixs = new ArrayList<>();
+        for (JsonElement suffix : jsonElement.getAsJsonObject().get("suffix").getAsJsonArray())
+          suffixs.add(suffix.getAsString());
+        int nowUsingSuffix = jsonElement.getAsJsonObject().get("nowUsingSuffix").getAsInt();
+        new PlayerSetting(name, particles, prefixs, suffixs, nowUsingParticle, nowUsingPrefix, nowUsingSuffix);
       }
       logger.info("Succeeded to load config");
     } catch (FileNotFoundException e) {
@@ -59,14 +63,21 @@ public class ConfigsLoader {
         JsonArray particles = new JsonArray();
         for (String particle : setting.particle)
           particles.add(particle);
-        JsonArray nicks = new JsonArray();
-        for (String nick : setting.nick)
-          nicks.add(nick);
-        System.out.println(nicks.toString());
+        JsonArray prefixs = new JsonArray();
+        for (String prefix : setting.prefix)
+          prefixs.add(prefix);
+        JsonArray suffixs = new JsonArray();
+        for (String suffix : setting.suffix)
+          suffixs.add(suffix);
+        System.out.println("{\"name\":\"" + setting.getName() + "\",\"particle\":" + particles.toString()
+            + ",\"nowUsingParticle\":" + setting.nowUsingParticle + ",\"prefix\":" + prefixs.toString()
+            + ",\"nowUsingPrefix\":" + setting.nowUsingPrefix + ",\"suffix\":" + suffixs.toString()
+            + "\"nowUsingSuffix\":" + setting.nowUsingSuffix + "}");
         json.add(new JsonParser().parse(
             "{\"name\":\"" + setting.getName() + "\",\"particle\":" + particles.toString()
-                + ",\"nowUsingParticle\":" + setting.nowUsingParticle + ",\"nick\":" + nicks.toString()
-                + ",\"nowUsingNick\":" + setting.nowUsingNick + "}"));
+                + ",\"nowUsingParticle\":" + setting.nowUsingParticle + ",\"prefix\":" + prefixs.toString()
+                + ",\"nowUsingPrefix\":" + setting.nowUsingPrefix + ",\"suffix\":" + suffixs.toString()
+                + ",\"nowUsingSuffix\":" + setting.nowUsingSuffix + "}"));
       }
       BufferedWriter bw = new BufferedWriter(new FileWriter(file_path));
       bw.write(json.toString());
