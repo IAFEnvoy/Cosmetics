@@ -58,8 +58,7 @@ public class PlayersCommands {
                         for (int i = 0; i < PlayerSetting.data
                             .get(context.getSource().getPlayer().getName().getString()).prefix.size(); i++) {
                           if (PlayerSetting.data.get(context.getSource().getPlayer().getName().getString()).prefix
-                              .get(i)
-                              .replace("§", "$").equals(name)) {
+                              .get(i).replace("§", "$").equals(name)) {
                             PlayerSetting.data
                                 .get(context.getSource().getPlayer().getName().getString()).nowUsingPrefix = i;
                             Nick.applyPreFix(context.getSource(), context.getSource().getPlayer().getName().getString(),

@@ -69,10 +69,6 @@ public class ConfigsLoader {
         JsonArray suffixs = new JsonArray();
         for (String suffix : setting.suffix)
           suffixs.add(suffix);
-        System.out.println("{\"name\":\"" + setting.getName() + "\",\"particle\":" + particles.toString()
-            + ",\"nowUsingParticle\":" + setting.nowUsingParticle + ",\"prefix\":" + prefixs.toString()
-            + ",\"nowUsingPrefix\":" + setting.nowUsingPrefix + ",\"suffix\":" + suffixs.toString()
-            + "\"nowUsingSuffix\":" + setting.nowUsingSuffix + "}");
         json.add(new JsonParser().parse(
             "{\"name\":\"" + setting.getName() + "\",\"particle\":" + particles.toString()
                 + ",\"nowUsingParticle\":" + setting.nowUsingParticle + ",\"prefix\":" + prefixs.toString()

@@ -6,6 +6,7 @@ import net.iafenvoy.cosmetics.commands.AdminsCommands;
 import net.iafenvoy.cosmetics.commands.PlayersCommands;
 import net.iafenvoy.cosmetics.configs.ConfigsLoader;
 import net.iafenvoy.cosmetics.configs.CosmeticsOPs;
+import net.iafenvoy.cosmetics.particles.MultiParticleType;
 import net.fabricmc.api.EnvType;
 
 @Environment(EnvType.SERVER)
@@ -19,6 +20,8 @@ public class Cosmetics implements DedicatedServerModInitializer {
 
     AdminsCommands.registryCommands();
     PlayersCommands.registryCommands();
+
+    MultiParticleType.loadData();
   }
 
 }

@@ -1,41 +1,7 @@
 {
     "name": "example",
     "timeDelta": -1,
-    "particles": [{
-            "type": "dust",
-            "color": [1.0, 1.0, 1.0, 1.0],
-            "pos": [0, 1, 0],
-            "delta": [0.3, 0.5, 0.3],
-            "speed": 0,
-            "count": 2,
-            "force": true
-        },
-        {
-            "type": "block",
-            "block": "minecraft:grass_block",
-            "pos": [0, 1, 0],
-            "delta": [0.3, 0.5, 0.3],
-            "speed": 0,
-            "count": 2,
-            "force": true
-        },
-        {
-            "type": "falling_dust",
-            "block": "minecraft:grass_block",
-            "pos": [0, 1, 0],
-            "delta": [0.3, 0.5, 0.3],
-            "speed": 0,
-            "count": 2,
-            "force": true
-        },
-        {
-            "type": "item",
-            "item": "minecraft:apple",
-            "pos": [0, 1, 0],
-            "delta": [0.3, 0.5, 0.3],
-            "speed": 0,
-            "count": 2,
-            "force": true
-        }
+    "particles": [
+        "particle flame ~ ~1 ~ .5 .6 .5 0 3"
     ]
 }

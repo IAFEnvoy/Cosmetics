@@ -5,6 +5,7 @@ import net.iafenvoy.cosmetics.Cosmetics;
 import net.iafenvoy.cosmetics.configs.ConfigsLoader;
 import net.iafenvoy.cosmetics.configs.CosmeticsOPs;
 import net.iafenvoy.cosmetics.configs.PlayerSetting;
+import net.iafenvoy.cosmetics.nicks.Nick;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.LiteralText;
 import static net.minecraft.server.command.CommandManager.*;
@@ -22,6 +23,10 @@ public class AdminsCommands {
               .requires(AdminsCommands::isOP)
               .executes(context -> {
                 ConfigsLoader.loadConfig();
+                for (PlayerSetting setting : PlayerSetting.data.values()) {
+                  Nick.applyPreFix(context.getSource(), setting.getName(), setting.getPrefix());
+                  Nick.applySuffix(context.getSource(), setting.getName(), setting.getSuffix());
+                }
                 return 0;
               }))
           .then(literal("setting")

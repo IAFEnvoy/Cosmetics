@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "minVersion": "0.6",
+    "package": "net.iafenvoy.cosmetics.mixins",
+    "compatibilityLevel": "JAVA_8",
+    "server": [
+        "TickWorldMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
