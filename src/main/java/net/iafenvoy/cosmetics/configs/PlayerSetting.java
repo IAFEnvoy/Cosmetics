@@ -9,7 +9,7 @@ public class PlayerSetting {
   public static HashMap<String, PlayerSetting> data = new HashMap<>();
   public String name;
   public List<String> particle, prefix, suffix;
-  public int nowUsingParticle = -1, nowUsingPrefix = -1, nowUsingSuffix = -1;
+  public int nowUsingParticle, nowUsingPrefix, nowUsingSuffix;
 
   public PlayerSetting(String name, List<String> particle, List<String> prefix, List<String> suffix,
       int nowUsingParticle,

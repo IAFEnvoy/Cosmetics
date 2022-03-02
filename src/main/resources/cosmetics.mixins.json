@@ -4,7 +4,8 @@
     "package": "net.iafenvoy.cosmetics.mixins",
     "compatibilityLevel": "JAVA_8",
     "server": [
-        "TickWorldMixin"
+        "TickWorldMixin",
+        "RemoveFeedbackMixin"
     ],
     "injectors": {
         "defaultRequire": 1
