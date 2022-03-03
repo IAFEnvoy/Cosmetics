@@ -5,7 +5,8 @@
     "compatibilityLevel": "JAVA_8",
     "server": [
         "TickWorldMixin",
-        "RemoveFeedbackMixin"
+        "RemoveFeedbackMixin",
+        "PlayerJoinMixin"
     ],
     "injectors": {
         "defaultRequire": 1

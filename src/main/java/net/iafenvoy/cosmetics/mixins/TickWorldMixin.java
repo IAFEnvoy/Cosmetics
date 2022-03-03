@@ -19,7 +19,6 @@ public class TickWorldMixin {
       MultiParticleType type = setting.getParticle();
       if (type != null)
         type.summon((MinecraftServer) (Object) this, setting.getName());
-      // TODO:为onPlayerJoin加入自动/team加nick
     }
   }
 }
